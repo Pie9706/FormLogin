@@ -48,8 +48,8 @@ button:hover {
   background-color: #45a049;
 }
 
-.user-info,
-.all-users-info {
+#user-info,
+#all-users-info {
   margin-top: 20px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -59,6 +59,6 @@ button:hover {
   overflow: auto;
 }
 
-.all-users-info {
+#all-users-info {
   margin-top: 40px;
 }
