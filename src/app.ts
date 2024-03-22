@@ -14,11 +14,13 @@ export class Persona {
     this.lastAccess = new Date();
     this.saveToLocalStorage();
     this.toggleButtons();
+    this.setUserLoggedIn(true);
   }
 
   logout() {
     localStorage.removeItem('userInfo');
-    location.reload(); // Reload the page
+    this.setUserLoggedIn(false);
+    location.reload();
   }
 
   saveToLocalStorage() {
@@ -68,5 +70,13 @@ export class Persona {
       loginButton.style.display = 'none';
       logoutButton.style.display = 'block';
     }
+  }
+
+  setUserLoggedIn(isLoggedIn: boolean) {
+    localStorage.setItem('userLoggedIn', isLoggedIn ? this.username : '');
+  }
+
+  static isUserLoggedIn(): boolean {
+    return !!localStorage.getItem('userLoggedIn');
   }
 }

@@ -9,6 +9,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const persona = new Persona('');
 
+  // Verifica se l'utente è già loggato al caricamento della pagina
+  const userLoggedIn = localStorage.getItem('userLoggedIn');
+
+  if (userLoggedIn) {
+    persona.username = userLoggedIn;
+    persona.retrieveFromLocalStorage();
+    if (userInfoDiv) userInfoDiv.style.display = 'block';
+    if (allUsersInfoDiv) allUsersInfoDiv.style.display = 'block';
+    if (usernameInput) usernameInput.style.display = 'none'; // Nascondi il campo di input
+    if (loginButton) loginButton.style.display = 'none'; // Nascondi il pulsante di login
+    if (logoutButton) logoutButton.style.display = 'block'; // Mostra il pulsante di logout
+  }
+
   function disableUsernameInput(disabled: boolean) {
     if (usernameInput) {
       usernameInput.disabled = disabled;
